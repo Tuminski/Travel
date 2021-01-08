@@ -44,3 +44,11 @@
     width: 100%;
     /* The width is the width of the web page */
   }
+
+  #weatherbg {
+    background-image: url("../images/sunset.PNG");
+    background-size: cover;
+    background-position: 100%;
+    padding: 25px 25px;
+    color: white;
+  }
