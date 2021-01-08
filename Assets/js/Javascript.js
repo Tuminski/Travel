@@ -34,16 +34,18 @@ function initMap () {
     //   position: slc,
     //   map: map,
     // });
-    addMarker({lat: 40.7608, lng: -111.8910 });
-    addMarker({lat: 40.6461, lng: -111.4980 });
-    addMarker({lat: 42.0299, lng: -111.3322 });
-    addMarker({lat: 37.0965, lng: -113.5684 });
-    addMarker({lat: 37.2982, lng: -113.0263 });
+    addMarker({lat: 40.7608, lng: -111.8910 }, map);
+    addMarker({lat: 40.6461, lng: -111.4980 }, park);
+    addMarker({lat: 42.0299, lng: -111.3322 }, lake);
+    addMarker({lat: 37.0965, lng: -113.5684 }, george);
+    addMarker({lat: 37.2982, lng: -113.0263 }, zions);
 
-    function addMarker (coords) {
+    function addMarker (coords, targetmap) {
         var marker = new google.maps.Marker({
             position: coords,
-            map: (map, park, lake, george, zions),
+            map:targetmap,
         });
+
+    
     }
 }
