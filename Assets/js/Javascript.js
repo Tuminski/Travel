@@ -52,35 +52,12 @@ function initMap () {
 
 var cities = ["Salt Lake City", "Park City", "Garden City", "St. George", "Kanab" ];
 
-var setUviColor = function(uviValue) {
-    var color = "";
-    if (uviValue <=2) {
-        color = '#28ff03';
-    } else if (uviValue > 2 && uviValue <= 5) {
-        color = 'orange';
-    } else {
-        color = 'red';
-    }
-    return color;
-};
-
 var createWeatherEl = function(iconData) {
     //Weather Icon
     var iconEl = document.createElement('img');
     iconEl.setAttribute("src","http://openweathermap.org/img/w/" + iconData + ".png");
     return iconEl;
 };
-
-// var createCityWeatherEl = function(c) {
-//     var cityEl = document.querySelector('#cities');
-//     cityEl.innerHTML = '';
-
-//     var cityWeatherEl = document.createElement('div');
-//     cityWeatherEl.setAttribute("class","city-weather")
-//     cityWeatherEl.setAttribute("id","city-weather-id-"+c)
-//     return cityWeatherEl;
-//     ;
-// };
 
 function getWeather(historySearch="",c) {
 
@@ -96,28 +73,12 @@ function getWeather(historySearch="",c) {
                 return response1.json();
             })
             .then(function(response1) {
-                // var currentCityEl = document.querySelector('#current-city');
-                // currentCityEl.setAttribute("id", "current-city-id-"+c);
-                // currentCityEl.innerHTML = '';
-
                 var cityEl = document.querySelector('#city-'+c)
-                // cityEl.innerHTML = '';
 
                 var cityNameEl = document.createElement('h5');
                 cityNameEl.setAttribute("class", "city-name");
-                // cityNameEl.setAttribute("id", "city-name-id-"+c);
                 cityNameEl.textContent = response1.name;
                 cityEl.appendChild(cityNameEl);
-                
-
-                // add date
-                // var dateEl = document.createElement('h2');
-                // var currentDate = new Date();
-                // dateEl.textContent = currentDate.toLocaleDateString('en-US');
-                // dateEl.setAttribute("class", "current-date");
-                // dateEl.setAttribute("id", "current-date-id-"+c);
-                // currentCityEl.appendChild(dateEl);
-                // cityEl.appendChild(dateEl);
 
                 fetch(
                     'https://api.openweathermap.org/data/2.5/onecall?lat=' + response1.coord.lat + '&lon=' + response1.coord.lon + '&exclude=minutely,hourly,alerts&units=imperial&appid=2c1512576f41358397a22bf62cab49d6'
@@ -129,7 +90,6 @@ function getWeather(historySearch="",c) {
                     //Create element to hold weather icon
                     var weatherIconEl = document.createElement('img');
                     weatherIconEl.setAttribute("class", "city-icon");
-                    // weatherIconEl.setAttribute("id", "city-icon-id"+c);
                     // Get the icon id from the api response
                     var weatherIconID = response2.current.weather[0].icon;
                     // Use the icon id to set the image src value
@@ -139,7 +99,6 @@ function getWeather(historySearch="",c) {
 
                     var weatherTempEl = document.createElement('h6');
                     weatherTempEl.textContent = `Temperature: ${response2.current.temp} °F`;
-                    // weatherTempEl.setAttribute("id", "temperature-id-"+c);
                     cityEl.appendChild(weatherTempEl);
 
                     var weatherHumidityEl = document.createElement('h6');
@@ -160,8 +119,6 @@ function getWeather(historySearch="",c) {
                     // UV Index value
                     var uvIndexValueEl = document.createElement('h6');
                     uvIndexValueEl.textContent = response2.current.uvi;
-                    uvIndexValueEl.setAttribute("class", "uv-index-value");
-                    uvIndexValueEl.setAttribute('style', 'background-color: '+setUviColor(response2.current.uvi) );
                     // Add text and value to element
                     uvIndexEl.appendChild(uvIndexTextEl);
                     uvIndexEl.appendChild(uvIndexValueEl);

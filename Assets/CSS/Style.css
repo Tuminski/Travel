@@ -68,3 +68,7 @@
     width: 100%;
     box-sizing: border-box;
   } 
+
+  .uv-index-text {
+    padding-right: 5px;
+  }
