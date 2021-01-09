@@ -103,9 +103,9 @@ function getWeather(historySearch="",c) {
                 var cityEl = document.querySelector('#city-'+c)
                 // cityEl.innerHTML = '';
 
-                var cityNameEl = document.createElement('h3');
+                var cityNameEl = document.createElement('h5');
                 cityNameEl.setAttribute("class", "city-name");
-                cityNameEl.setAttribute("id", "city-name-id-"+c);
+                // cityNameEl.setAttribute("id", "city-name-id-"+c);
                 cityNameEl.textContent = response1.name;
                 cityEl.appendChild(cityNameEl);
                 
@@ -128,48 +128,46 @@ function getWeather(historySearch="",c) {
                 .then(function(response2) {
                     //Create element to hold weather icon
                     var weatherIconEl = document.createElement('img');
-                    weatherIconEl.setAttribute("class", "current-city-icon");
+                    weatherIconEl.setAttribute("class", "city-icon");
+                    // weatherIconEl.setAttribute("id", "city-icon-id"+c);
                     // Get the icon id from the api response
                     var weatherIconID = response2.current.weather[0].icon;
                     // Use the icon id to set the image src value
                     weatherIconEl.setAttribute("src","http://openweathermap.org/img/w/" + weatherIconID + ".png");
                     // Add weather element to DOM
-                    currentCityEl.appendChild(weatherIconEl);
-                    // cityEl.appendChild(weatherIconEl);
+                    cityEl.appendChild(weatherIconEl);
 
-                    var currentWeatherEl = document.querySelector('#current-weather');
-                    currentWeatherEl.innerHTML = '';
-
-                    var weatherTempEl = document.createElement('h4');
+                    var weatherTempEl = document.createElement('h6');
                     weatherTempEl.textContent = `Temperature: ${response2.current.temp} °F`;
-                    weatherTempEl.setAttribute("id", "temperature-id-"+c);
-                    currentWeatherEl.appendChild(weatherTempEl);
+                    // weatherTempEl.setAttribute("id", "temperature-id-"+c);
+                    cityEl.appendChild(weatherTempEl);
 
-                    var weatherHumidityEl = document.createElement('h4');
+                    var weatherHumidityEl = document.createElement('h6');
                     weatherHumidityEl.textContent = "Humidity: " + response2.current.humidity;
-                    currentWeatherEl.appendChild(weatherHumidityEl);
+                    cityEl.appendChild(weatherHumidityEl);
 
-                    var windSpeedEl = document.createElement('h4');
+                    var windSpeedEl = document.createElement('h6');
                     windSpeedEl.textContent = "Wind Speed: " + response2.current.wind_speed;
-                    currentWeatherEl.appendChild(windSpeedEl);
+                    cityEl.appendChild(windSpeedEl);
 
                     // create element for UV Index
                     var uvIndexEl = document.createElement('div');
                     uvIndexEl.setAttribute("class", "uv-index");
                     // UV Index text
-                    var uvIndexTextEl = document.createElement('h4');
+                    var uvIndexTextEl = document.createElement('h6');
                     uvIndexTextEl.setAttribute("class", "uv-index-text");
                     uvIndexTextEl.textContent = "UV Index: ";
                     // UV Index value
-                    var uvIndexValueEl = document.createElement('h4');
+                    var uvIndexValueEl = document.createElement('h6');
                     uvIndexValueEl.textContent = response2.current.uvi;
                     uvIndexValueEl.setAttribute("class", "uv-index-value");
                     uvIndexValueEl.setAttribute('style', 'background-color: '+setUviColor(response2.current.uvi) );
                     // Add text and value to element
                     uvIndexEl.appendChild(uvIndexTextEl);
                     uvIndexEl.appendChild(uvIndexValueEl);
+                    
                     // Add element to DOM
-                    currentWeatherEl.appendChild(uvIndexEl);
+                    cityEl.appendChild(uvIndexEl);
 
                     // var forecastEl = document.querySelector('#forecast');
                     // forecastEl.innerHTML = '';

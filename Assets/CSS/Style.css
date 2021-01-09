@@ -52,3 +52,19 @@
     padding: 25px 25px;
     color: white;
   }
+
+  .response-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+  } 
+
+  .uv-index {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start ;
+    width: 100%;
+    box-sizing: border-box;
+  } 
