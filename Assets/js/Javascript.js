@@ -50,7 +50,7 @@ function initMap () {
     }
 }
 
-var cities = ["Salt Lake City", "Logan", "Moab", "St George", "Park City"];
+var cities = ["Salt Lake City", "Park City", "Garden City", "St. George", "Kanab" ];
 
 var setUviColor = function(uviValue) {
     var color = "";
@@ -82,18 +82,11 @@ var createWeatherEl = function(iconData) {
 //     ;
 // };
 
-function getWeather(historySearch="") {
-
-    for (c = 0; c < cities.length; c++){
-        // var searchTerm = document.querySelector("#searchTerm").value;
-        var searchTerm = cities[c];
-        console.log (searchTerm);
+function getWeather(historySearch="",c) {
 
         if (historySearch != "") {
             searchTerm = historySearch;
         }
-
-        // var cityEl = createCityWeatherEl(c);
 
         if (searchTerm != "" || searchTerm != null) {
             fetch(
@@ -103,16 +96,19 @@ function getWeather(historySearch="") {
                 return response1.json();
             })
             .then(function(response1) {
-                var currentCityEl = document.querySelector('#current-city');
-                currentCityEl.setAttribute("id", "current-city-id-"+c);
-                currentCityEl.innerHTML = '';
+                // var currentCityEl = document.querySelector('#current-city');
+                // currentCityEl.setAttribute("id", "current-city-id-"+c);
+                // currentCityEl.innerHTML = '';
 
-                var cityNameEl = document.createElement('h2');
-                cityNameEl.setAttribute("class", "current-city-name");
-                cityNameEl.setAttribute("id", "current-city-name-id-"+c);
+                var cityEl = document.querySelector('#city-'+c)
+                // cityEl.innerHTML = '';
+
+                var cityNameEl = document.createElement('h3');
+                cityNameEl.setAttribute("class", "city-name");
+                cityNameEl.setAttribute("id", "city-name-id-"+c);
                 cityNameEl.textContent = response1.name;
-                currentCityEl.appendChild(cityNameEl);
-                // cityEl.appendChild(cityNameEl);
+                cityEl.appendChild(cityNameEl);
+                
 
                 // add date
                 // var dateEl = document.createElement('h2');
@@ -133,7 +129,6 @@ function getWeather(historySearch="") {
                     //Create element to hold weather icon
                     var weatherIconEl = document.createElement('img');
                     weatherIconEl.setAttribute("class", "current-city-icon");
-                    weatherIconEl.setAttribute("id", "current-city-icon-id-"+c);
                     // Get the icon id from the api response
                     var weatherIconID = response2.current.weather[0].icon;
                     // Use the icon id to set the image src value
@@ -152,28 +147,23 @@ function getWeather(historySearch="") {
 
                     var weatherHumidityEl = document.createElement('h4');
                     weatherHumidityEl.textContent = "Humidity: " + response2.current.humidity;
-                    weatherHumidityEl.setAttribute("id", "humidty-id-"+c);
                     currentWeatherEl.appendChild(weatherHumidityEl);
 
                     var windSpeedEl = document.createElement('h4');
                     windSpeedEl.textContent = "Wind Speed: " + response2.current.wind_speed;
-                    windSpeedEl.setAttribute("id", "wind-speed-id-"+c);
                     currentWeatherEl.appendChild(windSpeedEl);
 
                     // create element for UV Index
                     var uvIndexEl = document.createElement('div');
                     uvIndexEl.setAttribute("class", "uv-index");
-                    uvIndexEl.setAttribute("id", "uvi-id-"+c);
                     // UV Index text
                     var uvIndexTextEl = document.createElement('h4');
                     uvIndexTextEl.setAttribute("class", "uv-index-text");
-                    uvIndexTextEl.setAttribute("id", "index-text-id-"+c);
                     uvIndexTextEl.textContent = "UV Index: ";
                     // UV Index value
                     var uvIndexValueEl = document.createElement('h4');
                     uvIndexValueEl.textContent = response2.current.uvi;
                     uvIndexValueEl.setAttribute("class", "uv-index-value");
-                    uvIndexValueEl.setAttribute("id", "index-value-id-"+c);
                     uvIndexValueEl.setAttribute('style', 'background-color: '+setUviColor(response2.current.uvi) );
                     // Add text and value to element
                     uvIndexEl.appendChild(uvIndexTextEl);
@@ -202,7 +192,9 @@ function getWeather(historySearch="") {
                 });
             });
         }
-    }
+    // }
 }
 
-getWeather();
+for (c = 0; c < cities.length; c++){
+    getWeather(cities[c],c);
+}
