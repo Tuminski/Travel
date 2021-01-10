@@ -1,6 +1,10 @@
+// Modal code
+
 $(document).ready(function(){
     $('.modal').modal();
 });
+
+// Google maps API code Start
 
 function initMap () {
     const slc = { lat: 40.7608, lng: -111.8910 };
@@ -29,11 +33,6 @@ function initMap () {
         zoom: 10,
         center: zionsN,
     });
-    // // The marker, positioned at Salt lake city
-    // const marker = new google.maps.Marker({
-    //   position: slc,
-    //   map: map,
-    // });
     addMarker({lat: 40.7608, lng: -111.8910 }, map);
     addMarker({lat: 40.6461, lng: -111.4980 }, park);
     addMarker({lat: 42.0299, lng: -111.3322 }, lake);
@@ -45,8 +44,6 @@ function initMap () {
             position: coords,
             map:targetmap,
         });
-
-    
     }
 }
 
