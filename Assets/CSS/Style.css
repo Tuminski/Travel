@@ -45,10 +45,113 @@
     /* The width is the width of the web page */
   }
 
+  /* local weather section */
   #weatherbg {
     background-image: url("../images/sunset.PNG");
     background-size: cover;
     background-position: 100%;
     padding: 25px 25px;
     color: white;
+  }
+
+  .local-weather {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+  } 
+
+  .uv-index {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start ;
+    width: 100%;
+    box-sizing: border-box;
+  } 
+
+  .uv-index-text {
+    padding-right: 5px;
+  }
+
+
+  /* city search forecast section */
+  .weather-search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 5vw;
+    width: 95vw;
+  }
+
+  .search-container {
+      width: 30%;
+      /* background-color: #f2f4f7; */
+  }
+
+  .search-input {
+    display: flex;
+    flex-direction: row;
+    /* max-height: 20px; */
+  }
+
+  .searchTerm {
+    /* max-height: 20px; */
+  }
+
+  .search-button {
+    /* max-height: 20px; */
+  }
+
+  .history-item {
+      width: 100%;
+      padding: 4px;
+      border: 1px solid rgb(185, 178, 178);
+  }
+
+  .response-container {
+      /* width: 70vw; */
+      width: 70%;
+      padding-left: 3mm;
+  }
+
+  .current-section {
+      /* border: 1px solid rgb(185, 178, 178); */
+      padding: 5px;
+  }
+
+  .current-city {
+      display: flex;
+      flex-direction: row;
+      /* justify-content: space-between; */
+      align-items: flex-start;
+  }
+
+  .current-city-name {
+      padding-right: 10px;
+  }
+
+  .current-date {
+      padding-right: 10px;
+  }
+
+  /* .uv-index {
+      display: flex;
+      flex-direction: row;
+      /* height: 18px; */
+  /* } */
+  
+
+  .forecast {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .forecast-day {
+      margin: 5px;
+      background-color: #4382e0;
+      padding: 5px;
   }
