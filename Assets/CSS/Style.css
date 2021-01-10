@@ -45,7 +45,7 @@
     /* The width is the width of the web page */
   }
 
-  /* current local weather section */
+  /* local weather section */
   #weatherbg {
     background-image: url("../images/sunset.PNG");
     background-size: cover;
@@ -75,7 +75,7 @@
   }
 
 
-  /* weather search section */
+  /* city search forecast section */
   .weather-search{
     display: flex;
     flex-direction: row;
