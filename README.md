@@ -26,3 +26,7 @@ A list of technologies used within the project:
 
 ![screenshot](/Assets/images/screenshot.PNG)
 
+### Made by
+
+* Michael Tuminski
+* Laura Michelle Peterson
