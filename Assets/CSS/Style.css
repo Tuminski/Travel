@@ -80,27 +80,30 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 5vw;
-    width: 95vw;
+    border: 10vw;
+    width: 90vw;
+    box-sizing: border-box;
   }
 
   .search-container {
       width: 30%;
+      margin-left: 30px;
       /* background-color: #f2f4f7; */
   }
 
   .search-input {
     display: flex;
     flex-direction: row;
-    /* max-height: 20px; */
+    max-height: 45px;
+    background-color: #2196F3;
   }
 
   .searchTerm {
-    /* max-height: 20px; */
+    max-height: 45px;
   }
 
   .search-button {
-    /* max-height: 20px; */
+    max-height: 45px;
   }
 
   .history-item {
@@ -117,7 +120,7 @@
 
   .current-section {
       /* border: 1px solid rgb(185, 178, 178); */
-      padding: 5px;
+      /* padding: 5px; */
   }
 
   .current-city {
@@ -135,13 +138,10 @@
       padding-right: 10px;
   }
 
-  /* .uv-index {
-      display: flex;
-      flex-direction: row;
-      /* height: 18px; */
-  /* } */
+  .current-city-icon {
+    padding-top: 30px;  
+  }
   
-
   .forecast {
       display: flex;
       flex-direction: row;
@@ -152,6 +152,6 @@
 
   .forecast-day {
       margin: 5px;
-      background-color: #4382e0;
+      background-color: #2196F3;
       padding: 5px;
   }
